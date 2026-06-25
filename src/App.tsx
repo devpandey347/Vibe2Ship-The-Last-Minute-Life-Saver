@@ -8,8 +8,10 @@ import { Settings } from './pages/Settings';
 import { NotFound } from './pages/NotFound';
 
 function App() {
+  const basename = import.meta.env.PROD ? import.meta.env.BASE_URL : undefined;
+
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router {...(basename ? { basename } : {})}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
