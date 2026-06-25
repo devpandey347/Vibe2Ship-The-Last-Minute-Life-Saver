@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Vibe2Ship-The-Last-Minute-Life-Saver/',
   server: {
     port: 3000,
     host: '0.0.0.0'
