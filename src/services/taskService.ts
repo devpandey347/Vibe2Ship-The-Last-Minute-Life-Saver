@@ -8,7 +8,7 @@ const TASKS_COLLECTION = 'tasks';
 
 let demoTasksMemory = [...DEMO_TASKS];
 
-export const isDemoMode = () => localStorage.getItem('demoMode') === 'true';
+export const isDemoMode = () => true;
 
 export const taskService = {
   async createTask(taskData: Omit<Task, 'id'>): Promise<string> {

@@ -2,6 +2,7 @@ import { db } from './firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import type { MasterSchedule } from '../types';
 import { DEMO_SCHEDULE } from './demoData';
+import { isDemoMode } from './taskService';
 
 const SCHEDULE_DOC_ID = 'currentSchedule';
 const SCHEDULE_COLLECTION = 'aiSchedule';
@@ -10,11 +11,7 @@ let demoScheduleMemory: MasterSchedule = { ...DEMO_SCHEDULE };
 
 export const scheduleService = {
   getSchedule: async (): Promise<MasterSchedule | null> => {
-    import('./taskService').then(m => {
-      if (!m.isDemoMode()) return;
-    });
-    // For sync check:
-    if (localStorage.getItem('demoMode') === 'true') {
+    if (isDemoMode()) {
       return demoScheduleMemory;
     }
     const docRef = doc(db, SCHEDULE_COLLECTION, SCHEDULE_DOC_ID);
@@ -26,7 +23,7 @@ export const scheduleService = {
   },
 
   saveSchedule: async (schedule: MasterSchedule): Promise<void> => {
-    if (localStorage.getItem('demoMode') === 'true') {
+    if (isDemoMode()) {
       demoScheduleMemory = schedule;
       return;
     }
@@ -49,13 +46,13 @@ export const scheduleService = {
       const tasks = await taskService.getTasks();
       const busySlots = await calendarService.getUpcomingEvents();
       const aiSchedule = await generateMasterTimeline(tasks, busySlots);
-      
+
       const newSchedule: MasterSchedule = {
         ...aiSchedule,
         generatedAt: Date.now(),
         isOutdated: false
       };
-      
+
       await scheduleService.saveSchedule(newSchedule);
       return newSchedule;
     } catch (error) {

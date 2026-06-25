@@ -9,7 +9,7 @@ export interface AIAnalysisResult {
   reasoning: string[];
 }
 
-export const isDemoMode = () => localStorage.getItem('demoMode') === 'true';
+export const isDemoMode = () => true;
 
 export const analyzeTask = async (goal: string, dueDate: string): Promise<AIAnalysisResult> => {
   if (isDemoMode()) {
