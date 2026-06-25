@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+  --color-tertiary: var(--tertiary);
+  --color-surface: var(--surface);
+  --color-primary-container: var(--primary-container);
+  --color-surface-variant: var(--surface-variant);
+  --color-outline-variant: var(--outline-variant);
+  --color-error: var(--error);
+  --color-on-primary: var(--on-primary);
+  --color-on-background: var(--on-background);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-on-tertiary: var(--on-tertiary);
+
+  --font-headline: Literata, serif;
+  --font-body: "Nunito Sans", sans-serif;
+  --font-label: "Nunito Sans", sans-serif;
+
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  --radius-xl: 12px;
+}
+
+@layer base {
+  :root {
+    --primary: #059669;
+    --background: #f9fafb;
+    --tertiary: #d97706;
+    --surface: #ffffff;
+    --primary-container: #d1fae5;
+    --surface-variant: #f3f4f6;
+    --outline-variant: #e5e7eb;
+    --error: #ef4444;
+    --on-primary: #ffffff;
+    --on-background: #111827;
+    --on-surface: #111827;
+    --on-surface-variant: #4b5563;
+    --on-tertiary: #ffffff;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --primary: #8cc39f;
+    --background: #151715;
+    --tertiary: #dfb962;
+    --surface: #1e201e;
+    --primary-container: #2b4934;
+    --surface-variant: #282b29;
+    --outline-variant: #4b504d;
+    --error: #ffb4ab;
+    --on-primary: #111e15;
+    --on-background: #e4e4e4;
+    --on-surface: #e4e4e4;
+    --on-surface-variant: #a0a49f;
+    --on-tertiary: #3a2e15;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
+}
+
+@layer utilities {
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}

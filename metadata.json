@@ -1,0 +1,8 @@
+{
+  "name": "Vibe2Ship",
+  "description": "A progressive web app task scheduler integrated with Gemini AI, Firebase database, and Google Calendar sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
